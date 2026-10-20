@@ -1140,7 +1140,7 @@ footer {
   }
 
   .hero-art::before {
-    width: min(32vw, 480px);
+    width: min(29vw, 440px);
     max-width: calc(100% - 100px);
     box-shadow:
       0 0 0 22px color-mix(in srgb, var(--line) 20%, transparent),
