@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11100f">
+<meta name="description" content="Rayme Ryan Anak Roxy — Multimedia Computing student focused on software quality, web development, and usability.">
+<title>RAYME RYAN — PLAYER PROFILE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind.config.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="Rayme Ryan home"><span class="brand-mark"><span>R</span></span><span>RAYME RYAN <span style="color:var(--red)">/</span> PROFILE</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#home" class="active">Home</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
+      <button class="menu-btn" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+  <div class="progress" id="scrollProgress" aria-hidden="true"></div>
+</header>
+<main id="main">
+  <section class="hero wrap" id="home" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div class="eyebrow">Player 001 · Multimedia Computing</div>
+      <h1 id="hero-title">RAYME<br><span>RYAN.</span></h1>
+      <p class="hero-lede">A Multimedia Computing student from Kuching, Sarawak, exploring the space between software quality, web experiences, and thoughtful design.</p>
+      <div class="role-line" aria-live="polite"><span id="typedRole">Quality Assurance</span><span aria-hidden="true"> ▌</span></div>
+      <div class="cta-row">
+        <a class="btn" href="#projects">Explore portfolio <span aria-hidden="true">↘</span></a>
+        <a class="btn secondary" href="#contact">Contact me</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Monogram emblem for Rayme Ryan">
+      <div class="seal"><span class="seal-side left">Curiosity · Craft</span><span class="seal-initials">RR</span><span class="seal-caption">Learn · Test · Improve</span><span class="seal-side right">Kuching · Sarawak</span></div>
+    </div>
+  </section>
+  <div class="status-strip" aria-label="Profile summary">
+    <div class="wrap status-inner">
+      <div class="status-item"><strong>Current class</strong><span>BSc Multimedia Computing</span></div>
+      <div class="status-item"><strong>Focus</strong><span>QA & web development</span></div>
+      <div class="status-item"><strong>Location</strong><span>Kuching, Sarawak</span></div>
+      <div class="status-item"><strong>Availability</strong><span>Open to learning opportunities</span></div>
+    </div>
+  </div>
+  <section class="wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Select mission</div><h2 id="projects-title">Work & experience</h2></div>
+      <p>A collection of practical experience and work areas drawn from my internship, QA responsibilities, and student involvement.</p>
+    </div>
+    <div class="filters reveal" role="group" aria-label="Filter portfolio entries">
+      <button class="filter-btn" data-filter="all" aria-pressed="true">All entries</button>
+      <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+      <button class="filter-btn" data-filter="qa" aria-pressed="false">Quality assurance</button>
+      <button class="filter-btn" data-filter="docs" aria-pressed="false">Documentation</button>
+      <button class="filter-btn" data-filter="community" aria-pressed="false">Community</button>
+    </div>
+    <div class="project-grid" id="projectGrid">
+      <article class="project-card reveal" data-category="web">
+        <div class="card-top"><span>Mission 01 / Web</span><span class="card-symbol" aria-hidden="true">↗</span></div>
+        <h3>Responsive Website Revamp</h3>
+        <p>Helped modernise an existing website with a mobile-responsive layout, improving usability across desktop, tablet, and mobile screens.</p>
+        <div class="tags"><span class="tag">Responsive UI</span><span class="tag">Web usability</span><span class="tag">Internship</span></div>
+        <button class="card-open" data-project="website">View mission details <span>↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="qa">
+        <div class="card-top"><span>Mission 02 / QA</span><span class="card-symbol" aria-hidden="true">⌕</span></div>
+        <h3>Functional & Regression Testing</h3>
+        <p>Performed manual functional, smoke, regression, negative, and user acceptance testing; maintained test cases and bug reports.</p>
+        <div class="tags"><span class="tag">Test cases</span><span class="tag">Bug reports</span><span class="tag">UAT</span></div>
+        <button class="card-open" data-project="testing">View mission details <span>↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="qa">
+        <div class="card-top"><span>Mission 03 / Security</span><span class="card-symbol" aria-hidden="true">◇</span></div>
+        <h3>Authentication & Session Review</h3>
+        <p>Tested Google OAuth and session workflows, with basic checks of JWT handling, browser storage, cookies, and authentication behaviour.</p>
+        <div class="tags"><span class="tag">JWT</span><span class="tag">OAuth</span><span class="tag">DevTools</span></div>
+        <button class="card-open" data-project="security">View mission details <span>↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="docs">
+        <div class="card-top"><span>Mission 04 / Reporting</span><span class="card-symbol" aria-hidden="true">▤</span></div>
+        <h3>Client Forms & Reports</h3>
+        <p>Created client forms, reports, and contractual documents using iReport (JasperReports) as part of internship responsibilities.</p>
+        <div class="tags"><span class="tag">iReport</span><span class="tag">JasperReports</span><span class="tag">Documents</span></div>
+        <button class="card-open" data-project="reports">View mission details <span>↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="community">
+        <div class="card-top"><span>Mission 05 / Community</span><span class="card-symbol" aria-hidden="true">⌂</span></div>
+        <h3>PERTEKMA Student Communication</h3>
+        <p>As Exco Programme, shared official faculty announcements and helped students navigate academic and administrative inquiries.</p>
+        <div class="tags"><span class="tag">Communication</span><span class="tag">Coordination</span><span class="tag">Student support</span></div>
+        <button class="card-open" data-project="pertekma">View mission details <span>↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="docs">
+        <div class="card-top"><span>Mission 06 / Process</span><span class="card-symbol" aria-hidden="true">✳</span></div>
+        <h3>QA Documentation & Retesting</h3>
+        <p>Documented reproducible issues, investigated browser behaviour with Chrome Developer Tools, and retested fixes to support quality improvements.</p>
+        <div class="tags"><span class="tag">Documentation</span><span class="tag">Debugging</span><span class="tag">Retesting</span></div>
+        <button class="card-open" data-project="documentation">View mission details <span>↗</span></button>
+      </article>
+    </div>
+  </section>
+  <section id="about" style="background:var(--panel)" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Character profile</div><h2 id="about-title">About me</h2></div><p>Curious by nature. Still learning. Focused on making digital experiences work better for people.</p></div>
+      <div class="about-grid">
+        <aside class="profile-panel reveal">
+          <div class="big-mark" aria-hidden="true">RR.</div>
+          <h3>Rayme Ryan Anak Roxy</h3>
+          <p>Multimedia Computing student with hands-on experience in software QA, web development, and application testing.</p>
+          <div class="profile-meta">
+            <div class="meta-row"><span>Current study</span><strong>UNIMAS</strong></div>
+            <div class="meta-row"><span>Based in</span><strong>Kuching, Malaysia</strong></div>
+            <div class="meta-row"><span>Working style</span><strong>Curious & collaborative</strong></div>
+          </div>
+        </aside>
+        <div class="about-copy reveal">
+          <p>I enjoy understanding how applications behave, finding issues that affect the user experience, and learning how design and development choices shape a product. My internship introduced me to hands-on QA practices, while my studies continue to build my technical foundation.</p>
+          <p>I am a motivated learner who values problem-solving, teamwork, and clear documentation. I am continuing to strengthen my development skills while building on my experience in testing and usability.</p>
+          <div class="eyebrow" style="margin-top:2rem">Experience timeline</div>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-date">Jan 2026 — Ongoing</div><h3>Quality Assurance (Contractor) · Techtodian</h3><p>Manual testing, security checks, test documentation, issue reproduction, and regression testing.</p></div>
+            <div class="timeline-item"><div class="timeline-date">Jan 2024 — Jan 2025</div><h3>Exco Programme · PERTEKMA</h3><p>Faculty announcements, student support, and communication between students and faculty.</p></div>
+            <div class="timeline-item"><div class="timeline-date">Sep 2023 — Mar 2024</div><h3>Intern Student · Sains Samarahan</h3><p>Website revamp and client-facing forms, reports, and contractual documents.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="wrap" id="skills" aria-labelledby="skills-title">
+    <div class="section-head reveal"><div><div class="eyebrow">Inventory</div><h2 id="skills-title">Skills & education</h2></div><p>Tools and capabilities I have worked with through study, internship, and student responsibilities.</p></div>
+    <div class="skills-layout reveal">
+      <div class="skill-group"><h3>Programming & web</h3><div class="skill-list"><span class="skill-chip">JavaScript</span><span class="skill-chip">Java</span><span class="skill-chip">HTML</span><span class="skill-chip">CSS</span><span class="skill-chip">React</span><span class="skill-chip">Tailwind CSS</span></div></div>
+      <div class="skill-group"><h3>Testing & technical tools</h3><div class="skill-list"><span class="skill-chip">Functional testing</span><span class="skill-chip">Regression testing</span><span class="skill-chip">Security testing</span><span class="skill-chip">Chrome DevTools</span><span class="skill-chip">Git</span><span class="skill-chip">GitHub</span><span class="skill-chip">VS Code</span><span class="skill-chip">AntiGravity</span></div></div>
+      <div class="skill-group"><h3>Data, UI & documentation</h3><div class="skill-list"><span class="skill-chip">SQL</span><span class="skill-chip">MySQL</span><span class="skill-chip">Figma</span><span class="skill-chip">Adobe Illustrator</span><span class="skill-chip">iReport</span><span class="skill-chip">Technical documentation</span></div></div>
+      <div class="skill-group"><h3>Strengths & languages</h3><div class="skill-list"><span class="skill-chip">Problem-solving</span><span class="skill-chip">Team player</span><span class="skill-chip">Management</span><span class="skill-chip">English</span><span class="skill-chip">Malay</span><span class="skill-chip">Iban</span><span class="skill-chip">Bidayuh</span></div></div>
+    </div>
+    <div class="eyebrow reveal" style="margin-top:3rem">Education record</div>
+    <div class="education-list reveal">
+      <article class="education-card"><div><h3>Bachelor of Computer Science (Multimedia Computing) with Honours</h3><p>Universiti Malaysia Sarawak (UNIMAS) · MQA/FA9706</p><p>CGPA: 3.1 (Year 2, Semester 2 — as listed in resume)</p></div><div class="year">2023 — Ongoing</div></article>
+      <article class="education-card"><div><h3>Diploma in Computer Science (CS110)</h3><p>Universiti Teknologi MARA (UiTM)</p><p>CGPA: 3.18</p></div><div class="year">2021 — 2023</div></article>
+      <article class="education-card"><div><h3>Sijil Pelajaran Malaysia (SPM)</h3><p>SMK Tun Abdul Razak · Results listed: 5A-, 1B+, 2D, 1E</p></div><div class="year">2016 — 2021</div></article>
+    </div>
+  </section>
+  <section id="contact" style="background:var(--panel)" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <div class="contact-copy">
+          <div class="eyebrow">Open transmission</div>
+          <h2 id="contact-title">Let's build<br>something better.</h2>
+          <p>Interested in connecting about QA, web development, or future learning opportunities? Feel free to reach out.</p>
+          <div class="contact-details">
+            <a class="contact-link" href="mailto:raymeryan98@gmail.com"><b aria-hidden="true">✉</b> raymeryan98@gmail.com</a>
+            <a class="contact-link" href="tel:+60172173038"><b aria-hidden="true">⌕</b> +60 17-217 3038</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/rayme-ryan" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">↗</b> LinkedIn profile</a>
+            <span class="contact-link"><b aria-hidden="true">⌖</b> Kuching, Sarawak, Malaysia</span>
+          </div>
+          <button class="btn secondary" type="button" id="copyEmail" style="margin-top:1.5rem">Copy email address</button>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="eyebrow">Message terminal</div>
+          <div class="field"><label for="senderName">Your name</label><input id="senderName" name="name" autocomplete="name" required maxlength="100" placeholder="Enter your name"></div>
+          <div class="field"><label for="senderEmail">Your email</label><input id="senderEmail" name="email" type="email" autocomplete="email" required maxlength="150" placeholder="you@example.com"></div>
+          <div class="field"><label for="senderMessage">Message</label><textarea id="senderMessage" name="message" required maxlength="2000" placeholder="Write a short message..."></textarea></div>
+          <button class="btn" type="submit">Prepare email <span aria-hidden="true">↗</span></button>
+          <p class="form-note" id="formNote" aria-live="polite">This form opens your email app; it does not send or store messages on this website.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Rayme Ryan Anak Roxy · Personal portfolio</span><span>Designed like a game menu. Built for the web.</span><a class="back-top" href="#home">Back to top ↑</a></div></footer>
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">Mission file</div><h2 id="modalTitle">Mission details</h2></div><button class="modal-close" id="modalClose" type="button" aria-label="Close project details">✕</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
