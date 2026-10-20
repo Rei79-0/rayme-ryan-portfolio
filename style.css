@@ -1125,3 +1125,30 @@ footer {
   }
 }
 
+
+/* Desktop: keep all decorative circles fully visible */
+@media (min-width: 851px) {
+  .hero {
+    overflow: visible;
+  }
+
+  .hero-art {
+    overflow: visible;
+    min-width: 0;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-art::before {
+    width: min(32vw, 480px);
+    max-width: calc(100% - 100px);
+    box-shadow:
+      0 0 0 22px color-mix(in srgb, var(--line) 20%, transparent),
+      0 0 0 48px color-mix(in srgb, var(--line) 12%, transparent);
+  }
+
+  .seal {
+    width: min(280px, 22vw);
+  }
+}
+
