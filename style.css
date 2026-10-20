@@ -1080,26 +1080,48 @@ footer {
 }
 
 
-/* Fix desktop RR emblem and circle alignment */
+/* Desktop: align the outer rings with the RR emblem */
 @media (min-width: 851px) {
+  .hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    overflow: hidden;
+  }
+
   .hero-art {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: none;
+    position: relative;
+    display: grid;
+    place-items: center;
     min-width: 0;
+    min-height: 430px;
+    transform: none;
+  }
+
+  /* Move the decorative rings into the emblem's container */
+  .hero:before {
+    content: none;
+  }
+
+  .hero-art::before {
+    content: "";
+    position: absolute;
+    width: min(35vw, 520px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 28px color-mix(in srgb, var(--line) 20%, transparent),
+      0 0 0 66px color-mix(in srgb, var(--line) 12%, transparent);
+    pointer-events: none;
   }
 
   .seal {
-    position: relative;
-    flex: 0 0 auto;
+    width: min(300px, 24vw);
     margin: 0;
-  }
-
-  .hero:before {
-    right: auto;
-    left: 75%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    flex-shrink: 0;
+    z-index: 1;
   }
 }
+
