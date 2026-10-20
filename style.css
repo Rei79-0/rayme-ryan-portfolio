@@ -1078,3 +1078,28 @@ footer {
     width: min(280px, 27vw);
   }
 }
+
+
+/* Fix desktop RR emblem and circle alignment */
+@media (min-width: 851px) {
+  .hero-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+    min-width: 0;
+  }
+
+  .seal {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .hero:before {
+    right: auto;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
