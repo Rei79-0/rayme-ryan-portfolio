@@ -1337,3 +1337,213 @@ footer {
 .seal:after {
   border-color: var(--pink);
 }
+
+
+/* =========================================
+   GALAXY THEME — BACKGROUND
+   ========================================= */
+
+:root {
+  --bg: #1F1A3D;
+  --panel: #100B20;
+  --ink: #EAB8E4;
+  --muted: #C9B6D8;
+  --line: #6A0DAD;
+
+  --red: #6A0DAD;
+  --gold: #EAB8E4;
+  --green: #A45DBB;
+
+  --purple: #6A0DAD;
+  --purple-light: #A45DBB;
+  --pink: #EAB8E4;
+  --navy: #1F1A3D;
+}
+
+/* Deep space background */
+body {
+  background:
+    radial-gradient(
+      ellipse at 75% 15%,
+      rgba(106, 13, 173, 0.16),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 15% 55%,
+      rgba(164, 93, 187, 0.08),
+      transparent 35%
+    ),
+    #1F1A3D;
+
+  background-attachment: fixed;
+}
+
+/* Subtle stars across the page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #EAB8E4 99%, transparent),
+    radial-gradient(2px 2px at 30% 70%, #FFFFFF 99%, transparent),
+    radial-gradient(1px 1px at 50% 35%, #A45DBB 99%, transparent),
+    radial-gradient(2px 2px at 70% 15%, #EAB8E4 99%, transparent),
+    radial-gradient(1px 1px at 85% 65%, #FFFFFF 99%, transparent),
+    radial-gradient(1px 1px at 20% 90%, #A45DBB 99%, transparent),
+    radial-gradient(2px 2px at 92% 40%, #EAB8E4 99%, transparent),
+    radial-gradient(1px 1px at 60% 85%, #FFFFFF 99%, transparent);
+
+  background-size:
+    320px 320px,
+    420px 420px,
+    280px 280px,
+    360px 360px,
+    300px 300px,
+    400px 400px,
+    340px 340px,
+    450px 450px;
+
+  opacity: 0.4;
+}
+
+/* Make the page feel more atmospheric */
+.topbar {
+  background: rgba(20, 13, 38, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+.status-strip,
+.project-card,
+.profile-panel,
+.skill-group,
+.education-card,
+.contact-panel {
+  background: rgba(16, 11, 32, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+/* =========================================
+   GALAXY THEME — SOLAR SYSTEM ORBITS
+   ========================================= */
+
+.hero-art {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Outer orbital rings */
+@keyframes orbit-clockwise {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbit-counterclockwise {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* Large orbit around the RR emblem */
+@media (min-width: 851px) {
+  .hero-art::before {
+    border: 1px solid rgba(164, 93, 187, 0.7);
+
+    box-shadow:
+      0 0 0 20px rgba(106, 13, 173, 0.10),
+      0 0 0 42px rgba(106, 13, 173, 0.07),
+      0 0 30px rgba(106, 13, 173, 0.18);
+
+    animation: orbit-clockwise 45s linear infinite;
+  }
+
+  .seal {
+    z-index: 2;
+
+    box-shadow:
+      0 0 0 12px rgba(31, 26, 61, 0.9),
+      0 0 0 13px rgba(164, 93, 187, 0.65),
+      0 0 35px rgba(106, 13, 173, 0.25);
+  }
+}
+
+/* Inner dotted orbit */
+.seal::before {
+  border: 1px dashed rgba(164, 93, 187, 0.75);
+  animation: orbit-counterclockwise 18s linear infinite;
+}
+
+/* Inner solid orbit */
+.seal::after {
+  border: 1px solid rgba(234, 184, 228, 0.65);
+  animation: orbit-clockwise 28s linear infinite;
+}
+
+/* Keep the initials above the orbit decorations */
+.seal-initials,
+.seal-caption {
+  z-index: 3;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-art::before,
+  .seal::before,
+  .seal::after {
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   GALAXY THEME — NEBULA ACCENTS
+   ========================================= */
+
+.hero h1 span {
+  color: var(--purple-light);
+  text-shadow: 0 0 30px rgba(164, 93, 187, 0.12);
+}
+
+.eyebrow,
+.seal-caption,
+.timeline-date {
+  color: var(--pink);
+}
+
+.btn:not(.secondary) {
+  background: linear-gradient(
+    135deg,
+    #6A0DAD,
+    #812AC0
+  );
+
+  border-color: #812AC0;
+  box-shadow: 0 0 18px rgba(106, 13, 173, 0.2);
+}
+
+.btn:not(.secondary):hover {
+  background: linear-gradient(
+    135deg,
+    #A45DBB,
+    #EAB8E4
+  );
+
+  border-color: var(--pink);
+  color: #1F1A3D;
+  box-shadow: 0 0 25px rgba(164, 93, 187, 0.3);
+}
+
+.project-card:hover {
+  border-color: var(--purple-light);
+  box-shadow: 0 8px 35px rgba(106, 13, 173, 0.12);
+}
