@@ -1,4 +1,6 @@
+
 "use strict";
+
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -37,141 +39,297 @@ const projectDetails = {
 
 let lastFocusedElement = null;
 const modal = $("#projectModal");
+
 function showToast(message) {
   const toast = $("#toast");
   toast.textContent = message;
   toast.classList.add("show");
+
   window.clearTimeout(showToast.timeout);
-  showToast.timeout = window.setTimeout(() => toast.classList.remove("show"), 2400);
+
+  showToast.timeout = window.setTimeout(
+    () => toast.classList.remove("show"),
+    2400
+  );
 }
+
 function openProject(key) {
   const project = projectDetails[key];
-  if (!project) { showToast("Mission details are unavailable."); return; }
+
+  if (!project) {
+    showToast("Mission details are unavailable.");
+    return;
+  }
+
   lastFocusedElement = document.activeElement;
+
   $("#modalEyebrow").textContent = project.eyebrow;
   $("#modalTitle").textContent = project.title;
   $("#modalBody").innerHTML = project.body;
+
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
+
   document.body.style.overflow = "hidden";
+
   $("#modalClose").focus();
 }
+
 function closeProject() {
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
+
   document.body.style.overflow = "";
-  if (lastFocusedElement) lastFocusedElement.focus();
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  }
 }
-$$("[data-project]").forEach(button => button.addEventListener("click", () => openProject(button.dataset.project)));
+
+$$("[data-project]").forEach(button => {
+  button.addEventListener("click", () => {
+    openProject(button.dataset.project);
+  });
+});
+
 $("#modalClose").addEventListener("click", closeProject);
-modal.addEventListener("click", event => { if (event.target === modal) closeProject(); });
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && modal.classList.contains("open")) closeProject();
-  if (event.key === "Tab" && modal.classList.contains("open")) {
-    const focusable = $$("button, a, input, textarea", modal).filter(el => !el.disabled);
-    if (!focusable.length) return;
-    if (event.shiftKey && document.activeElement === focusable[0]) { event.preventDefault(); focusable[focusable.length - 1].focus(); }
-    else if (!event.shiftKey && document.activeElement === focusable[focusable.length - 1]) { event.preventDefault(); focusable[0].focus(); }
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    closeProject();
   }
 });
 
-$$(".filter-btn").forEach(button => button.addEventListener("click", () => {
-  const filter = button.dataset.filter;
-  $$(".filter-btn").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
-  $$(".project-card").forEach(card => { card.hidden = filter !== "all" && card.dataset.category !== filter; });
-}));
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && modal.classList.contains("open")) {
+    closeProject();
+  }
 
+  if (event.key === "Tab" && modal.classList.contains("open")) {
+    const focusable = $$("button, a, input, textarea", modal)
+      .filter(el => !el.disabled);
+
+    if (!focusable.length) return;
+
+    if (event.shiftKey && document.activeElement === focusable[0]) {
+      event.preventDefault();
+      focusable[focusable.length - 1].focus();
+    } else if (
+      !event.shiftKey &&
+      document.activeElement === focusable[focusable.length - 1]
+    ) {
+      event.preventDefault();
+      focusable[0].focus();
+    }
+  }
+});
+
+// Project filters
+$$(".filter-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+
+    $$(".filter-btn").forEach(item => {
+      item.setAttribute("aria-pressed", String(item === button));
+    });
+
+    $$(".project-card").forEach(card => {
+      card.hidden = filter !== "all" &&
+        card.dataset.category !== filter;
+    });
+  });
+});
+
+// Mobile navigation
 const navToggle = $("#menuToggle");
 const navlinks = $("#navlinks");
+
 navToggle.addEventListener("click", () => {
   const isOpen = navlinks.classList.toggle("open");
+
   navToggle.setAttribute("aria-expanded", String(isOpen));
-  navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+
+  navToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu"
+  );
+
   navToggle.textContent = isOpen ? "✕" : "☰";
 });
-$$(".navlinks a").forEach(link => link.addEventListener("click", () => {
-  navlinks.classList.remove("open");
-  navToggle.setAttribute("aria-expanded", "false");
-  navToggle.setAttribute("aria-label", "Open navigation menu");
-  navToggle.textContent = "☰";
-}));
 
-const themeToggle = $("#themeToggle");
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("light");
-  const isLight = document.body.classList.contains("light");
-  themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
-  showToast(isLight ? "Light theme enabled." : "Dark theme enabled.");
+$$(".navlinks a").forEach(link => {
+  link.addEventListener("click", () => {
+    navlinks.classList.remove("open");
+
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open navigation menu");
+    navToggle.textContent = "☰";
+  });
 });
 
+// Theme toggle
+const themeToggle = $("#themeToggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+
+  themeToggle.setAttribute(
+    "aria-label",
+    isLight ? "Switch to dark theme" : "Switch to light theme"
+  );
+
+  showToast(
+    isLight ? "Light theme enabled." : "Dark theme enabled."
+  );
+});
+
+// Copy email address
 $("#copyEmail").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("raymeryan98@gmail.com");
+
     showToast("Email address copied.");
   } catch (error) {
     const temporary = document.createElement("textarea");
+
     temporary.value = "raymeryan98@gmail.com";
     temporary.setAttribute("readonly", "");
+
     temporary.style.position = "absolute";
     temporary.style.left = "-9999px";
+
     document.body.appendChild(temporary);
+
     temporary.select();
+
     const copied = document.execCommand("copy");
+
     temporary.remove();
-    showToast(copied ? "Email address copied." : "Copy failed — use the email link.");
+
+    showToast(
+      copied
+        ? "Email address copied."
+        : "Copy failed — please copy the address manually."
+    );
   }
 });
 
-$("#contactForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  if (!form.reportValidity()) return;
-  const name = $("#senderName").value.trim();
-  const email = $("#senderEmail").value.trim();
-  const message = $("#senderMessage").value.trim();
-  if (!name || !email || !message) { $("#formNote").textContent = "Please complete all fields."; return; }
-  const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  $("#formNote").textContent = "Opening your email app with the message prepared…";
-  window.location.href = `mailto:raymeryan98@gmail.com?subject=${subject}&body=${body}`;
-});
+// Contact Form - Prototype Submission
+const contactForm = $("#contactForm");
+const formNote = $("#formNote");
 
-const roleText = ["Quality Assurance", "Web Development", "Usability & Testing", "Always Learning"];
+if (contactForm) {
+  contactForm.addEventListener("submit", event => {
+    // Prevent actual form submission or external application opening
+    event.preventDefault();
+
+    // Validate required fields
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    const name = $("#senderName").value.trim();
+    const email = $("#senderEmail").value.trim();
+    const message = $("#senderMessage").value.trim();
+
+    if (!name || !email || !message) {
+      formNote.textContent = "Please complete all fields.";
+      return;
+    }
+
+    // Simulate successful submission for prototype demonstration
+    formNote.textContent =
+      "Message submitted successfully! (Prototype demonstration only — no email was sent.)";
+
+    // Clear the form after simulated submission
+    contactForm.reset();
+
+    // Display confirmation toast
+    showToast("Message submitted successfully!");
+  });
+}
+
+// Rotating role text
+const roleText = [
+  "Quality Assurance",
+  "Web Development",
+  "Usability & Testing",
+  "Always Learning"
+];
+
 let roleIndex = 0;
+
 const roleElement = $("#typedRole");
+
 window.setInterval(() => {
   roleIndex = (roleIndex + 1) % roleText.length;
+
   roleElement.textContent = roleText[roleIndex];
 }, 2600);
 
+// Scroll progress indicator
 const progress = $("#scrollProgress");
-function updateProgress() {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
-}
-window.addEventListener("scroll", updateProgress, { passive: true });
-window.addEventListener("resize", updateProgress);
-updateProgress();
 
-const revealObserver = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 }) : null;
-$$(".reveal").forEach(element => {
-  if (revealObserver) revealObserver.observe(element);
-  else element.classList.add("visible");
+function updateProgress() {
+  const scrollable =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  progress.style.width =
+    `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+}
+
+window.addEventListener("scroll", updateProgress, {
+  passive: true
 });
 
-const sectionObserver = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    $$(".navlinks a").forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
-  });
-}, { rootMargin: "-30% 0px -60% 0px" }) : null;
-$$("main section[id]").forEach(section => { if (sectionObserver) sectionObserver.observe(section); });
+window.addEventListener("resize", updateProgress);
 
+updateProgress();
+
+// Scroll reveal animations
+const revealObserver = "IntersectionObserver" in window
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 })
+  : null;
+
+$$(".reveal").forEach(element => {
+  if (revealObserver) {
+    revealObserver.observe(element);
+  } else {
+    element.classList.add("visible");
+  }
+});
+
+// Active navigation section tracking
+const sectionObserver = "IntersectionObserver" in window
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        $$(".navlinks a").forEach(link => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${entry.target.id}`
+          );
+        });
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" })
+  : null;
+
+$$("main section[id]").forEach(section => {
+  if (sectionObserver) {
+    sectionObserver.observe(section);
+  }
+});
+
+// Automatically update footer year
 $("#year").textContent = new Date().getFullYear();
