@@ -1,17 +1,34 @@
+/* =========================================
+   1. COLOUR PALETTE & GLOBAL SETTINGS
+   ========================================= */
+
 :root {
   color-scheme: dark;
-  --bg: #000000;
-  --panel: #1F1A3D;
-  --ink: #F6EDF7;
-  --muted: #EAB8E4;
-  --line: rgba(234, 184, 228, 0.35);
+
+  /* Main palette */
+  --bg: #1F1A3D;
+  --panel: #000000;
+  --ink: #EAB8E4;
+  --muted: #c9b6d8;
+  --line: #6A0DAD;
+
+  /* Accent colours */
   --red: #6A0DAD;
-  --gold: #A45DBB;
-  --green: #EAB8E4;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
+  --gold: #EAB8E4;
+  --green: #A45DBB;
+
+  /* Additional palette colours */
+  --purple: #6A0DAD;
+  --purple-light: #A45DBB;
+  --pink: #EAB8E4;
+  --navy: #1F1A3D;
+
+  --shadow: 0 18px 50px #00000066;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -27,34 +44,58 @@ body {
 }
 
 body.light {
-  --bg: #f3eaf8;
-  --panel: #f9f1ff;
-  --ink: #1f1a3d;
-  --muted: #6a0dad;
-  --line: #d9b7e8;
-  --red: #6a0dad;
-  --gold: #a45dbb;
-  --green: #eab8e4;
-  --shadow: 0 18px 50px rgba(31, 26, 61, 0.12);
+  color-scheme: light;
+
+  --bg: #EAB8E4;
+  --panel: #ffffff;
+  --ink: #1F1A3D;
+  --muted: #514267;
+  --line: #A45DBB;
+
+  --red: #6A0DAD;
+  --gold: #6A0DAD;
+  --green: #6A0DAD;
+
+  --purple: #6A0DAD;
+  --purple-light: #A45DBB;
+  --pink: #EAB8E4;
+  --navy: #1F1A3D;
+
+  --shadow: 0 18px 50px #1F1A3D20;
 }
 
-a { color: inherit; }
+a {
+  color: inherit;
+}
 
-button, input, textarea { font: inherit; }
+button,
+input,
+textarea {
+  font: inherit;
+}
 
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
   -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--pink);
   outline-offset: 4px;
 }
 
-button { cursor: pointer; }
+/* =========================================
+   2. ACCESSIBILITY
+   ========================================= */
 
 .skip-link {
   position: absolute;
@@ -62,11 +103,17 @@ button { cursor: pointer; }
   top: -100px;
   z-index: 100;
   padding: .7rem 1rem;
-  background: var(--gold);
-  color: #111;
+  background: var(--pink);
+  color: var(--navy);
 }
 
-.skip-link:focus { top: 1rem; }
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
 
 .topbar {
   position: sticky;
@@ -103,14 +150,16 @@ button { cursor: pointer; }
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--red);
-  color: var(--red);
+  border: 1px solid var(--purple-light);
+  color: var(--pink);
   transform: rotate(45deg);
   font-family: Georgia, serif;
   font-size: 1.15rem;
 }
 
-.brand-mark span { transform: rotate(-45deg); }
+.brand-mark span {
+  transform: rotate(-45deg);
+}
 
 .navlinks {
   display: flex;
@@ -128,7 +177,9 @@ button { cursor: pointer; }
 }
 
 .navlinks a:hover,
-.navlinks a.active { color: var(--gold); }
+.navlinks a.active {
+  color: var(--pink);
+}
 
 .nav-actions {
   display: flex;
@@ -147,9 +198,17 @@ button { cursor: pointer; }
   place-items: center;
 }
 
-.menu-btn { display: none; }
+.menu-btn {
+  display: none;
+}
 
-main { overflow: hidden; }
+/* =========================================
+   4. MAIN LAYOUT
+   ========================================= */
+
+main {
+  overflow: hidden;
+}
 
 .wrap {
   max-width: 1180px;
@@ -158,14 +217,16 @@ main { overflow: hidden; }
 }
 
 .eyebrow {
-  color: var(--gold);
+  color: var(--pink);
   text-transform: uppercase;
   font-size: .7rem;
   letter-spacing: .24em;
   font-weight: 800;
 }
 
-/* HERO SECTION */
+/* =========================================
+   5. HERO SECTION
+   ========================================= */
 
 .hero {
   min-height: 650px;
@@ -208,7 +269,7 @@ main { overflow: hidden; }
 }
 
 .hero h1 span {
-  color: var(--red);
+  color: var(--purple-light);
   display: block;
   font-style: italic;
 }
@@ -221,7 +282,7 @@ main { overflow: hidden; }
 
 .role-line {
   min-height: 1.6rem;
-  color: var(--gold);
+  color: var(--pink);
   font-family: monospace;
   font-size: .9rem;
   margin: 1.2rem 0;
@@ -241,40 +302,60 @@ main { overflow: hidden; }
   gap: .6rem;
   padding: .85rem 1.1rem;
   text-decoration: none;
-  border: 1px solid var(--red);
-  color: var(--ink);
-  background: var(--red);
+  border: 1px solid var(--purple);
+  color: #ffffff;
+  background: var(--purple);
   font-size: .75rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .12em;
-  transition: transform .2s, background .2s;
+  transition:
+    transform .2s,
+    background .2s,
+    border-color .2s;
 }
 
-.btn:hover { transform: translateY(-3px); }
+.btn:hover {
+  transform: translateY(-3px);
+  background: var(--purple-light);
+  border-color: var(--purple-light);
+  color: var(--navy);
+}
 
 .btn.secondary {
   background: transparent;
   border-color: var(--line);
+  color: var(--ink);
 }
+
+.btn.secondary:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #ffffff;
+}
+
+/* =========================================
+   6. RR EMBLEM
+   ========================================= */
 
 .hero-art {
   min-height: 390px;
   display: grid;
   place-items: center;
+  position: relative;
 }
 
 .seal {
   width: min(330px, 76vw);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 1px solid var(--red);
+  border: 1px solid var(--purple-light);
   display: grid;
   place-items: center;
   position: relative;
   background: radial-gradient(
     circle,
-    color-mix(in srgb, var(--red) 12%, var(--panel)) 0,
+    color-mix(in srgb, var(--purple) 18%, var(--panel)) 0,
     var(--bg) 65%
   );
   box-shadow:
@@ -295,7 +376,7 @@ main { overflow: hidden; }
 .seal:after {
   inset: 20%;
   border-style: solid;
-  border-color: var(--gold);
+  border-color: var(--pink);
   opacity: .6;
 }
 
@@ -312,7 +393,7 @@ main { overflow: hidden; }
   position: absolute;
   bottom: 14%;
   z-index: 3;
-  color: var(--gold);
+  color: var(--pink);
   font-size: .62rem;
   letter-spacing: .28em;
   text-transform: uppercase;
@@ -337,7 +418,9 @@ main { overflow: hidden; }
   transform: translateY(-50%);
 }
 
-/* STATUS STRIP */
+/* =========================================
+   7. STATUS STRIP
+   ========================================= */
 
 .status-strip {
   border-block: 1px solid var(--line);
@@ -354,7 +437,9 @@ main { overflow: hidden; }
   border-right: 1px solid var(--line);
 }
 
-.status-item:last-child { border: 0; }
+.status-item:last-child {
+  border: 0;
+}
 
 .status-item strong {
   display: block;
@@ -368,9 +453,13 @@ main { overflow: hidden; }
   font-size: .75rem;
 }
 
-/* GENERAL SECTIONS */
+/* =========================================
+   8. GENERAL SECTIONS
+   ========================================= */
 
-section { padding-block: 6rem; }
+section {
+  padding-block: 6rem;
+}
 
 .section-head {
   display: flex;
@@ -396,7 +485,9 @@ section { padding-block: 6rem; }
   font-size: .9rem;
 }
 
-/* PROJECTS */
+/* =========================================
+   9. PROJECTS
+   ========================================= */
 
 .filters {
   display: flex;
@@ -416,9 +507,9 @@ section { padding-block: 6rem; }
 }
 
 .filter-btn[aria-pressed="true"] {
-  background: var(--gold);
-  color: #17130d;
-  border-color: var(--gold);
+  background: var(--purple);
+  color: #ffffff;
+  border-color: var(--purple);
 }
 
 .project-grid {
@@ -435,22 +526,26 @@ section { padding-block: 6rem; }
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform .25s, border-color .25s;
+  transition:
+    transform .25s,
+    border-color .25s;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  border-color: var(--gold);
+  border-color: var(--purple-light);
 }
 
-.project-card[hidden] { display: none; }
+.project-card[hidden] {
+  display: none;
+}
 
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: .5rem;
-  color: var(--gold);
+  color: var(--pink);
   font-size: .65rem;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -459,7 +554,7 @@ section { padding-block: 6rem; }
 .card-symbol {
   font-family: Georgia, serif;
   font-size: 2.2rem;
-  color: var(--red);
+  color: var(--purple-light);
   line-height: 1;
 }
 
@@ -506,11 +601,13 @@ section { padding-block: 6rem; }
 }
 
 .card-open span {
-  color: var(--red);
+  color: var(--purple-light);
   padding-left: .4rem;
 }
 
-/* ABOUT */
+/* =========================================
+   10. ABOUT SECTION
+   ========================================= */
 
 .about-grid {
   display: grid;
@@ -529,7 +626,7 @@ section { padding-block: 6rem; }
   font-family: Georgia, serif;
   font-size: 5rem;
   line-height: 1;
-  color: var(--red);
+  color: var(--purple-light);
 }
 
 .profile-panel h3 {
@@ -559,9 +656,13 @@ section { padding-block: 6rem; }
   font-size: .78rem;
 }
 
-.meta-row span:first-child { color: var(--muted); }
+.meta-row span:first-child {
+  color: var(--muted);
+}
 
-.about-copy > p { color: var(--muted); }
+.about-copy > p {
+  color: var(--muted);
+}
 
 .timeline {
   margin-top: 2rem;
@@ -571,7 +672,9 @@ section { padding-block: 6rem; }
   gap: 1.8rem;
 }
 
-.timeline-item { position: relative; }
+.timeline-item {
+  position: relative;
+}
 
 .timeline-item:before {
   content: "";
@@ -579,14 +682,14 @@ section { padding-block: 6rem; }
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--purple-light);
   left: -1.82rem;
   top: .45rem;
   box-shadow: 0 0 0 5px var(--bg);
 }
 
 .timeline-date {
-  color: var(--gold);
+  color: var(--pink);
   text-transform: uppercase;
   letter-spacing: .13em;
   font-size: .65rem;
@@ -604,7 +707,9 @@ section { padding-block: 6rem; }
   font-size: .83rem;
 }
 
-/* SKILLS */
+/* =========================================
+   11. SKILLS
+   ========================================= */
 
 .skills-layout {
   display: grid;
@@ -620,7 +725,7 @@ section { padding-block: 6rem; }
 
 .skill-group h3 {
   font-size: .78rem;
-  color: var(--gold);
+  color: var(--pink);
   text-transform: uppercase;
   letter-spacing: .16em;
   margin: 0 0 1rem;
@@ -640,10 +745,12 @@ section { padding-block: 6rem; }
 
 .skill-chip:before {
   content: "＋ ";
-  color: var(--red);
+  color: var(--purple-light);
 }
 
-/* EDUCATION */
+/* =========================================
+   12. EDUCATION
+   ========================================= */
 
 .education-list {
   display: grid;
@@ -672,13 +779,15 @@ section { padding-block: 6rem; }
 }
 
 .education-card .year {
-  color: var(--gold);
+  color: var(--pink);
   font-size: .72rem;
   text-align: right;
   white-space: nowrap;
 }
 
-/* CONTACT */
+/* =========================================
+   13. CONTACT
+   ========================================= */
 
 .contact-panel {
   background: var(--panel);
@@ -722,7 +831,7 @@ section { padding-block: 6rem; }
 }
 
 .contact-link b {
-  color: var(--red);
+  color: var(--purple-light);
   width: 24px;
 }
 
@@ -762,11 +871,13 @@ section { padding-block: 6rem; }
 
 .form-note {
   min-height: 1.3rem;
-  color: var(--green);
+  color: var(--purple-light);
   font-size: .78rem;
 }
 
-/* FOOTER AND INTERACTIVE ELEMENTS */
+/* =========================================
+   14. FOOTER
+   ========================================= */
 
 footer {
   border-top: 1px solid var(--line);
@@ -783,9 +894,13 @@ footer {
 }
 
 .back-top {
-  color: var(--gold);
+  color: var(--pink);
   text-decoration: none;
 }
+
+/* =========================================
+   15. MODAL & TOAST
+   ========================================= */
 
 .modal {
   position: fixed;
@@ -798,7 +913,9 @@ footer {
   padding: 1rem;
 }
 
-.modal.open { display: flex; }
+.modal.open {
+  display: flex;
+}
 
 .modal-card {
   max-width: 620px;
@@ -806,7 +923,7 @@ footer {
   max-height: 85vh;
   overflow: auto;
   background: var(--panel);
-  border: 1px solid var(--gold);
+  border: 1px solid var(--purple-light);
   box-shadow: var(--shadow);
   padding: clamp(1.3rem, 4vw, 2.4rem);
 }
@@ -840,7 +957,9 @@ footer {
   font-size: .9rem;
 }
 
-.modal-body ul { padding-left: 1.2rem; }
+.modal-body ul {
+  padding-left: 1.2rem;
+}
 
 .toast {
   position: fixed;
@@ -848,8 +967,8 @@ footer {
   right: 1rem;
   bottom: 1rem;
   padding: .8rem 1rem;
-  background: var(--gold);
-  color: #17130d;
+  background: var(--pink);
+  color: var(--navy);
   font-size: .8rem;
   font-weight: 800;
   box-shadow: var(--shadow);
@@ -866,25 +985,29 @@ footer {
 
 .progress {
   height: 2px;
-  background: var(--red);
+  background: var(--purple-light);
   position: absolute;
   left: 0;
   bottom: -1px;
   width: 0;
 }
 
+/* =========================================
+   16. SCROLL ANIMATIONS
+   ========================================= */
+
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity .6s ease, transform .6s ease;
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: none;
 }
-
-/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -901,28 +1024,40 @@ footer {
   }
 }
 
-/* TABLET */
+/* =========================================
+   17. TABLET
+   ========================================= */
 
 @media (max-width: 850px) {
-  .navlinks { gap: .75rem; }
+  .navlinks {
+    gap: .75rem;
+  }
 
-  .navlinks a { font-size: .67rem; }
+  .navlinks a {
+    font-size: .67rem;
+  }
 
   .hero {
     min-height: auto;
     padding-block: 4rem;
   }
 
-  .hero-art { min-height: 300px; }
+  .hero-art {
+    min-height: 300px;
+  }
 
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-grid { gap: 1.5rem; }
+  .about-grid {
+    gap: 1.5rem;
+  }
 }
 
-/* MOBILE */
+/* =========================================
+   18. MOBILE
+   ========================================= */
 
 @media (max-width: 650px) {
   .nav {
@@ -930,7 +1065,9 @@ footer {
     padding-inline: 1rem;
   }
 
-  .menu-btn { display: grid; }
+  .menu-btn {
+    display: grid;
+  }
 
   .navlinks {
     display: none;
@@ -946,7 +1083,9 @@ footer {
     gap: 0;
   }
 
-  .navlinks.open { display: flex; }
+  .navlinks.open {
+    display: flex;
+  }
 
   .navlinks a {
     padding: .9rem .4rem;
@@ -954,7 +1093,9 @@ footer {
     font-size: .75rem;
   }
 
-  .brand { font-size: .7rem; }
+  .brand {
+    font-size: .7rem;
+  }
 
   .hero {
     grid-template-columns: 1fr;
@@ -962,24 +1103,41 @@ footer {
     gap: 2rem;
   }
 
-  .hero-art { min-height: 250px; }
+  .hero-art {
+    min-height: 250px;
+  }
 
-  .seal { width: 220px; }
+  .seal {
+    width: 220px;
+  }
 
-  .seal-initials { font-size: 5rem; }
+  .seal-initials {
+    font-size: 5rem;
+  }
 
-  .seal-side.left { left: -1.8rem; }
-  .seal-side.right { right: -1.8rem; }
+  .seal-side.left {
+    left: -1.8rem;
+  }
 
-  .status-inner { grid-template-columns: repeat(2, 1fr); }
+  .seal-side.right {
+    right: -1.8rem;
+  }
 
-  .status-item:nth-child(2) { border-right: 0; }
+  .status-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .status-item:nth-child(2) {
+    border-right: 0;
+  }
 
   .status-item:nth-child(-n+2) {
     border-bottom: 1px solid var(--line);
   }
 
-  section { padding-block: 4rem; }
+  section {
+    padding-block: 4rem;
+  }
 
   .section-head {
     align-items: start;
@@ -993,9 +1151,189 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .project-card { min-height: 250px; }
+  .project-card {
+    min-height: 250px;
+  }
 
   .contact-copy {
     border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
+
+  .education-card {
+    grid-template-columns: 1fr;
+  }
+
+  .education-card .year {
+    text-align: left;
+  }
+}
+
+/* =========================================
+   19. SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 380px) {
+  .wrap {
+    padding-inline: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .brand {
+    letter-spacing: .07em;
+  }
+
+  .brand-mark {
+    width: 29px;
+    height: 29px;
+  }
+}
+
+/* =========================================
+   20. DESKTOP RR CIRCLE ALIGNMENT
+   The decorative rings and RR emblem share
+   the same centre within .hero-art.
+   ========================================= */
+
+@media (min-width: 851px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+
+    /* Allow decorative circles to extend outside
+       the hero without being clipped here. */
+    overflow: visible;
+  }
+
+  .hero-art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 430px;
+    transform: none;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  /* Remove the old hero-level circles.
+     They used a different positioning reference. */
+  .hero:before {
+    content: none;
+  }
+
+  /* Draw the decorative outer rings in the
+     same container as the RR emblem. */
+  .hero-art::before {
+    content: "";
+    position: absolute;
+
+    width: min(32vw, 480px);
+    max-width: calc(100% - 100px);
+    aspect-ratio: 1;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    box-shadow:
+      0 0 0 22px color-mix(in srgb, var(--line) 20%, transparent),
+      0 0 0 48px color-mix(in srgb, var(--line) 12%, transparent);
+
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .seal {
+    position: relative;
+    width: min(280px, 22vw);
+    margin: 0;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .seal-side.left {
+    left: -2rem;
+  }
+
+  .seal-side.right {
+    right: -2rem;
+  }
+}
+
+/* =========================================
+   21. MEDIUM DESKTOP / SMALL LAPTOP
+   ========================================= */
+
+@media (min-width: 851px) and (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr);
+    gap: 1.5rem;
+  }
+
+  .hero-art {
+    min-height: 400px;
+  }
+
+  .hero-art::before {
+    width: min(34vw, 400px);
+    max-width: calc(100% - 80px);
+
+    box-shadow:
+      0 0 0 18px color-mix(in srgb, var(--line) 20%, transparent),
+      0 0 0 38px color-mix(in srgb, var(--line) 12%, transparent);
+  }
+
+  .seal {
+    width: min(260px, 23vw);
+  }
+}
+
+/* =========================================
+   22. PURPLE THEME FINISHING TOUCHES
+   ========================================= */
+
+.navlinks a:hover,
+.navlinks a.active {
+  color: var(--pink);
+}
+
+.brand-mark {
+  border-color: var(--purple-light);
+}
+
+.eyebrow,
+.seal-caption,
+.timeline-date {
+  color: var(--pink);
+}
+
+.card-symbol,
+.card-open span,
+.contact-link b {
+  color: var(--purple-light);
+}
+
+.filter-btn[aria-pressed="true"] {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #ffffff;
+}
+
+.project-card:hover {
+  border-color: var(--purple-light);
+}
+
+.seal {
+  border-color: var(--purple-light);
+}
+
+.seal:after {
+  border-color: var(--pink);
 }
