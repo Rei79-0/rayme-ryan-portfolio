@@ -4,7 +4,6 @@
 - `index.html` — page structure and portfolio content
 - `style.css` — custom styling and responsive layouts
 - `script.js` — project details, filters, navigation, theme toggle, contact form, and page interactions
-- `tailwind.config.js` — separate Tailwind CDN configuration
 
 ## Run locally
 Keep all four files in the same folder and open `index.html` in a browser.
