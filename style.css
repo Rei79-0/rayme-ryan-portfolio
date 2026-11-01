@@ -1666,3 +1666,210 @@ body.light .topbar {
         position: absolute;
     }
 }
+
+
+
+/* =========================================
+   24. REFINED RESPONSIVE RR EMBLEM
+   Keeps the complete circular emblem together
+   and improves side-label readability on mobile.
+   ========================================= */
+
+/* Keep the emblem and its decorative rings centred
+   in the same visual area on smaller screens. */
+@media (max-width: 650px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-block: 3.5rem 2.5rem;
+  }
+
+  /* Remove the separate oversized orbit behind the
+     mobile copy; the emblem gets its own centred rings. */
+  .hero::before {
+    content: none;
+  }
+
+  .hero-copy,
+  .hero-art {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-art {
+    --seal-size: clamp(250px, 76vw, 300px);
+    min-height: calc(var(--seal-size) + 64px);
+    padding-inline: 1.5rem;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  /* Outer orbital rings are centred on the RR seal,
+     rather than positioned independently of it. */
+  .hero-art::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--seal-size) + 54px);
+    max-width: calc(100% - 8px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 13px color-mix(in srgb, var(--line) 18%, transparent),
+      0 0 0 29px color-mix(in srgb, var(--line) 10%, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .seal {
+    --seal-size: clamp(250px, 76vw, 300px);
+    width: var(--seal-size);
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .seal-initials {
+    font-size: clamp(5.2rem, 22vw, 6.2rem);
+    line-height: 1;
+    letter-spacing: -.12em;
+  }
+
+  .seal-caption {
+    left: 50%;
+    bottom: 13%;
+    width: max-content;
+    max-width: 80%;
+    transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(.52rem, 2.5vw, .62rem);
+    letter-spacing: .2em;
+  }
+
+  /* Use rotated horizontal text instead of vertical
+     writing mode, which can make words look like
+     separate stacked characters on narrow screens. */
+  .seal-side {
+    top: 50%;
+    writing-mode: horizontal-tb;
+    white-space: nowrap;
+    font-size: .56rem;
+    line-height: 1;
+    letter-spacing: .16em;
+    z-index: 3;
+  }
+
+  .seal-side.left {
+    left: 50%;
+    right: auto;
+    transform:
+      translate(
+        calc(-50% - var(--seal-size) / 2 - 12px),
+        -50%
+      )
+      rotate(-90deg);
+    transform-origin: center;
+  }
+
+  .seal-side.right {
+    left: 50%;
+    right: auto;
+    transform:
+      translate(
+        calc(-50% + var(--seal-size) / 2 + 12px),
+        -50%
+      )
+      rotate(90deg);
+    transform-origin: center;
+  }
+
+  /* Keep the CTA buttons tidy before the emblem. */
+  .cta-row {
+    gap: .65rem;
+  }
+
+  .btn {
+    min-height: 46px;
+  }
+}
+
+/* Very narrow phones: slightly reduce the seal while
+   preserving its circular shape and keeping labels clear. */
+@media (max-width: 380px) {
+  .hero-art {
+    --seal-size: 240px;
+    min-height: 300px;
+    padding-inline: 1.1rem;
+  }
+
+  .seal {
+    --seal-size: 240px;
+    width: var(--seal-size);
+  }
+
+  .seal-side {
+    font-size: .5rem;
+    letter-spacing: .12em;
+  }
+
+  .seal-side.left {
+    transform:
+      translate(
+        calc(-50% - var(--seal-size) / 2 - 9px),
+        -50%
+      )
+      rotate(-90deg);
+  }
+
+  .seal-side.right {
+    transform:
+      translate(
+        calc(-50% + var(--seal-size) / 2 + 9px),
+        -50%
+      )
+      rotate(90deg);
+  }
+}
+
+/* On tablet layouts, retain the stacked composition
+   and keep the complete RR emblem centred. */
+@media (min-width: 651px) and (max-width: 850px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .hero-art {
+    min-height: 370px;
+  }
+
+  .hero-art::before {
+    content: "";
+    position: absolute;
+    width: min(390px, 72vw);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 18px color-mix(in srgb, var(--line) 18%, transparent),
+      0 0 0 38px color-mix(in srgb, var(--line) 10%, transparent);
+    pointer-events: none;
+  }
+
+  .seal {
+    width: min(280px, 58vw);
+    z-index: 1;
+  }
+}
