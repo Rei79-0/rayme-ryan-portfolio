@@ -2085,3 +2085,189 @@ body.light .topbar {
     overflow-wrap: anywhere;
   }
 }
+
+
+
+/* =========================================
+   26. iPAD MINI PORTRAIT FIX
+   Plain CSS only — no Tailwind or CSS framework.
+   Place this block at the very end of the stylesheet.
+   ========================================= */
+
+@media screen and (min-width: 700px) and (max-width: 850px) {
+  /* Force compact tablet navigation.
+     !important protects these rules from earlier desktop
+     navigation declarations in this stylesheet. */
+  body .topbar .nav .menu-btn {
+    display: grid !important;
+    flex: 0 0 40px;
+  }
+
+  body .topbar .nav .navlinks:not(.open) {
+    display: none !important;
+  }
+
+  body .topbar .nav .navlinks.open {
+    display: flex !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: .75rem 1.25rem 1rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  body .topbar .nav .navlinks.open a {
+    display: block;
+    padding: .85rem .35rem;
+    border-bottom: 1px solid var(--line);
+    font-size: .75rem;
+    letter-spacing: .12em;
+  }
+
+  body .topbar .nav .navlinks.open a:last-child {
+    border-bottom: 0;
+  }
+
+  body .topbar .nav {
+    position: relative;
+    min-height: 68px;
+    padding: .65rem 1.25rem;
+    gap: .75rem;
+  }
+
+  body .topbar .nav .brand {
+    min-width: 0;
+    font-size: .72rem;
+    letter-spacing: .07em;
+  }
+
+  /* Stack the profile and emblem so neither is squeezed
+     into a narrow desktop-style two-column hero. */
+  body main .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    min-height: auto;
+    gap: 1.75rem;
+    padding-block: 3.5rem 2.75rem;
+  }
+
+  body main .hero-copy {
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  body main .hero h1 {
+    font-size: clamp(3.5rem, 8vw, 5.2rem);
+  }
+
+  body main .hero-lede {
+    max-width: 650px;
+  }
+
+  body main .hero-art {
+    width: 100%;
+    min-width: 0;
+    min-height: 390px;
+    display: grid;
+    place-items: center;
+    padding-inline: 2rem;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  body main .hero-art::before {
+    content: "";
+    position: absolute;
+    width: min(390px, 62vw);
+    max-width: calc(100% - 40px);
+    aspect-ratio: 1 / 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 18px color-mix(in srgb, var(--line) 18%, transparent),
+      0 0 0 38px color-mix(in srgb, var(--line) 10%, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body main .hero-art .seal {
+    width: min(280px, 48vw);
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    z-index: 1;
+  }
+
+  /* Make status information readable in two columns. */
+  body .status-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body .status-item {
+    min-width: 0;
+    padding: 1rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  body .status-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  body .status-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  body .status-item strong,
+  body .status-item span {
+    overflow-wrap: anywhere;
+  }
+
+  /* Keep other multi-column areas comfortable at this width. */
+  body .about-grid,
+  body .contact-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body .contact-copy {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* iPad Mini landscape is 1024px wide. Keep the desktop
+   composition, but tighten navigation and hero proportions. */
+@media screen and (min-width: 851px) and (max-width: 1100px) {
+  body .topbar .nav {
+    gap: .65rem;
+    padding-inline: 1rem;
+  }
+
+  body .topbar .nav .navlinks {
+    gap: .7rem;
+  }
+
+  body .topbar .nav .navlinks a {
+    font-size: .66rem;
+    letter-spacing: .08em;
+  }
+
+  body main .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr);
+    gap: 1rem;
+  }
+
+  body main .hero h1 {
+    font-size: clamp(3.3rem, 5.8vw, 4.8rem);
+  }
+}
