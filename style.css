@@ -1456,28 +1456,40 @@ html:has(body.light) {
 
 /* Light mode gets a lighter texture.
    No dark purple overlay. */
+
 body.light::before {
     background:
+        /* Soft pastel glow */
         radial-gradient(
             ellipse at 50% 100%,
-            rgba(255, 255, 255, 0.28),
+            rgba(255, 255, 255, 0.24),
             transparent 70%
         ),
+
+        /* More visible muted-purple dots */
         radial-gradient(
             circle,
-            rgba(106, 13, 173, 0.10) 0.6px,
-            transparent 1px
+            rgba(75, 35, 105, 0.38) 0.8px,
+            transparent 1.2px
         ),
+
+        /* Slightly darker fine grain */
         repeating-linear-gradient(
             0deg,
-            rgba(106, 13, 173, 0.025) 0px,
-            rgba(106, 13, 173, 0.025) 1px,
+            rgba(75, 35, 105, 0.045) 0px,
+            rgba(75, 35, 105, 0.045) 1px,
             transparent 1px,
             transparent 3px
         );
 
-    opacity: 0.55;
+    background-size:
+        100% 100%,
+        9px 9px,
+        100% 4px;
+
+    opacity: 0.85;
 }
+
 
 /* =========================================
    LIGHT MODE TEXT CONTRAST
