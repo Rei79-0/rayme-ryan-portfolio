@@ -1371,7 +1371,7 @@ footer {
    23. TEXTURED BACKGROUND & LIGHT MODE
    ========================================= */
 
-/* Keep the existing theme colours as the base */
+/* Dark mode background */
 html {
     background-color: var(--bg);
     min-height: 100%;
@@ -1384,7 +1384,7 @@ body {
     min-height: 100vh;
 }
 
-/* Subtle grainy texture and ambient lighting */
+/* Dark mode texture */
 body::before {
     content: "";
     position: fixed;
@@ -1393,21 +1393,16 @@ body::before {
     pointer-events: none;
 
     background:
-        /* Soft ambient glow */
         radial-gradient(
             ellipse at 50% 100%,
             rgba(190, 130, 40, 0.09),
             transparent 65%
         ),
-
-        /* Fine scattered speckles */
         radial-gradient(
             circle,
             rgba(255, 255, 255, 0.13) 0.6px,
             transparent 1px
         ),
-
-        /* Subtle horizontal grain */
         repeating-linear-gradient(
             0deg,
             rgba(255, 255, 255, 0.018) 0px,
@@ -1424,14 +1419,7 @@ body::before {
     opacity: 0.55;
 }
 
-/* Give the main navigation a slightly translucent finish */
-.topbar {
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(14px);
-}
-
-/* Slightly soften the solid panels so the background
-   texture does not feel disconnected from the content */
+/* Translucent content panels */
 .project-card,
 .profile-panel,
 .skill-group,
@@ -1443,20 +1431,57 @@ body::before {
 }
 
 /* =========================================
-   LIGHT MODE - IMPROVED TEXT CONTRAST
+   LIGHT MODE BACKGROUND
    ========================================= */
 
 body.light {
+    --bg: #EAB8E4;
+    --panel: #ffffff;
     --ink: #241332;
     --muted: #493653;
     --line: #8950A5;
 
-    /* Darker accent colours for better visibility */
     --gold: #64118F;
     --green: #64118F;
     --purple: #64118F;
     --purple-light: #753A96;
+
+    background: transparent;
 }
+
+/* Restore light pink-purple background */
+html:has(body.light) {
+    background-color: #EAB8E4;
+}
+
+/* Light mode gets a lighter texture.
+   No dark purple overlay. */
+body.light::before {
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(255, 255, 255, 0.28),
+            transparent 70%
+        ),
+        radial-gradient(
+            circle,
+            rgba(106, 13, 173, 0.10) 0.6px,
+            transparent 1px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(106, 13, 173, 0.025) 0px,
+            rgba(106, 13, 173, 0.025) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+
+    opacity: 0.55;
+}
+
+/* =========================================
+   LIGHT MODE TEXT CONTRAST
+   ========================================= */
 
 /* Navigation and brand */
 body.light .brand,
@@ -1476,13 +1501,14 @@ body.light .navlinks a.active {
     color: #64118F;
 }
 
-/* Hero section */
+/* Hero */
 body.light .eyebrow,
 body.light .role-line {
     color: #64118F;
 }
 
-body.light .hero h1 {
+body.light .hero h1,
+body.light .seal-initials {
     color: #241332;
 }
 
@@ -1495,10 +1521,6 @@ body.light .hero-lede {
 }
 
 /* RR emblem */
-body.light .seal-initials {
-    color: #241332;
-}
-
 body.light .seal-caption,
 body.light .seal-side {
     color: #64118F;
@@ -1514,7 +1536,7 @@ body.light .section-head p {
     color: #493653;
 }
 
-/* Project cards */
+/* Projects */
 body.light .card-top,
 body.light .card-symbol,
 body.light .card-open span {
@@ -1531,7 +1553,7 @@ body.light .card-open {
     color: #493653;
 }
 
-/* About section and timeline */
+/* About and timeline */
 body.light .profile-panel .big-mark,
 body.light .timeline-date {
     color: #64118F;
@@ -1572,7 +1594,7 @@ body.light .education-card .year {
     color: #64118F;
 }
 
-/* Contact section */
+/* Contact */
 body.light .contact-copy p,
 body.light .field label {
     color: #493653;
@@ -1607,7 +1629,7 @@ body.light .back-top {
     color: #64118F;
 }
 
-/* Modal and toast */
+/* Modal */
 body.light .modal-head h2 {
     color: #241332;
 }
@@ -1616,12 +1638,17 @@ body.light .modal-body {
     color: #493653;
 }
 
-/* Profile portrait border */
+/* Portrait border */
 body.light .profile-image-container {
     border-color: #64118F;
 }
 
-/* Mobile background behaviour */
+/* Light mode navigation background */
+body.light .topbar {
+    background: rgba(234, 184, 228, 0.88);
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     body::before {
         position: absolute;
