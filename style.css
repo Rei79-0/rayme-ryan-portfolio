@@ -2142,3 +2142,124 @@ body.light .topbar {
     min-width: 0;
   }
 }
+
+
+
+/* =========================================
+   26. iPAD MINI PORTRAIT VISUAL POLISH
+   Fixes the oversized hero orbit and improves
+   the RR seal labels at 768px tablet width.
+   Plain CSS only.
+   ========================================= */
+
+@media screen and (min-width: 651px) and (max-width: 850px) and (orientation: portrait) {
+  /* The large decorative orbit belongs to the desktop
+     two-column hero. Remove it when the hero is stacked. */
+  .hero::before,
+  .hero:before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Keep the profile copy clear and aligned. */
+  .hero {
+    overflow: visible;
+    row-gap: 1.25rem;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-art {
+    --ipad-seal: clamp(250px, 38vw, 290px);
+    min-height: calc(var(--ipad-seal) + 76px);
+    margin-top: .25rem;
+    padding-inline: 3.25rem;
+    overflow: visible;
+  }
+
+  /* One controlled orbit around the emblem only. */
+  .hero-art::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: calc(var(--ipad-seal) + 48px);
+    max-width: calc(100% - 2rem);
+    aspect-ratio: 1 / 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 13px color-mix(in srgb, var(--line) 16%, transparent),
+      0 0 0 27px color-mix(in srgb, var(--line) 9%, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-art .seal {
+    width: var(--ipad-seal);
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Set the labels horizontally first, then rotate each
+     complete phrase around the outside of the circle. */
+  .hero-art .seal-side {
+    top: 50%;
+    writing-mode: horizontal-tb;
+    white-space: nowrap;
+    font-size: .56rem;
+    line-height: 1;
+    letter-spacing: .13em;
+    transform-origin: center;
+  }
+
+  .hero-art .seal-side.left {
+    left: 50%;
+    right: auto;
+    transform: translate(calc(-50% - var(--ipad-seal) / 2 - 13px), -50%) rotate(-90deg);
+  }
+
+  .hero-art .seal-side.right {
+    left: 50%;
+    right: auto;
+    transform: translate(calc(-50% + var(--ipad-seal) / 2 + 13px), -50%) rotate(90deg);
+  }
+
+  .hero-art .seal-caption {
+    left: 50%;
+    bottom: 13%;
+    width: max-content;
+    max-width: 82%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-align: center;
+    font-size: .58rem;
+    letter-spacing: .19em;
+  }
+
+  /* Ensure the status grid has enough room and doesn't
+     visually collide with the emblem above it. */
+  .status-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .status-item {
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .status-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .status-item:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
