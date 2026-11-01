@@ -1365,3 +1365,265 @@ footer {
         height: 150px;
     }
 }
+
+
+/* =========================================
+   23. TEXTURED BACKGROUND & LIGHT MODE
+   ========================================= */
+
+/* Keep the existing theme colours as the base */
+html {
+    background-color: var(--bg);
+    min-height: 100%;
+}
+
+body {
+    background: transparent;
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+}
+
+/* Subtle grainy texture and ambient lighting */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        /* Soft ambient glow */
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(190, 130, 40, 0.09),
+            transparent 65%
+        ),
+
+        /* Fine scattered speckles */
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.13) 0.6px,
+            transparent 1px
+        ),
+
+        /* Subtle horizontal grain */
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.018) 0px,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+
+    background-size:
+        100% 100%,
+        9px 9px,
+        100% 4px;
+
+    opacity: 0.55;
+}
+
+/* Give the main navigation a slightly translucent finish */
+.topbar {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px);
+}
+
+/* Slightly soften the solid panels so the background
+   texture does not feel disconnected from the content */
+.project-card,
+.profile-panel,
+.skill-group,
+.education-card,
+.contact-panel,
+.modal-card {
+    background: color-mix(in srgb, var(--panel) 90%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+/* =========================================
+   LIGHT MODE - IMPROVED TEXT CONTRAST
+   ========================================= */
+
+body.light {
+    --ink: #241332;
+    --muted: #493653;
+    --line: #8950A5;
+
+    /* Darker accent colours for better visibility */
+    --gold: #64118F;
+    --green: #64118F;
+    --purple: #64118F;
+    --purple-light: #753A96;
+}
+
+/* Navigation and brand */
+body.light .brand,
+body.light .navlinks a,
+body.light .icon-btn,
+body.light .menu-btn {
+    color: #241332;
+}
+
+body.light .brand-mark {
+    color: #64118F;
+    border-color: #753A96;
+}
+
+body.light .navlinks a:hover,
+body.light .navlinks a.active {
+    color: #64118F;
+}
+
+/* Hero section */
+body.light .eyebrow,
+body.light .role-line {
+    color: #64118F;
+}
+
+body.light .hero h1 {
+    color: #241332;
+}
+
+body.light .hero h1 span {
+    color: #753A96;
+}
+
+body.light .hero-lede {
+    color: #493653;
+}
+
+/* RR emblem */
+body.light .seal-initials {
+    color: #241332;
+}
+
+body.light .seal-caption,
+body.light .seal-side {
+    color: #64118F;
+}
+
+/* Section headings */
+body.light .section-head h2,
+body.light .contact-copy h2 {
+    color: #241332;
+}
+
+body.light .section-head p {
+    color: #493653;
+}
+
+/* Project cards */
+body.light .card-top,
+body.light .card-symbol,
+body.light .card-open span {
+    color: #64118F;
+}
+
+body.light .project-card h3 {
+    color: #241332;
+}
+
+body.light .project-card p,
+body.light .tag,
+body.light .card-open {
+    color: #493653;
+}
+
+/* About section and timeline */
+body.light .profile-panel .big-mark,
+body.light .timeline-date {
+    color: #64118F;
+}
+
+body.light .profile-panel h3,
+body.light .timeline-item h3 {
+    color: #241332;
+}
+
+body.light .profile-panel p,
+body.light .about-copy > p,
+body.light .timeline-item p,
+body.light .meta-row span:first-child {
+    color: #493653;
+}
+
+/* Skills */
+body.light .skill-group h3,
+body.light .skill-chip::before {
+    color: #64118F;
+}
+
+body.light .skill-chip {
+    color: #241332;
+}
+
+/* Education */
+body.light .education-card h3 {
+    color: #241332;
+}
+
+body.light .education-card p {
+    color: #493653;
+}
+
+body.light .education-card .year {
+    color: #64118F;
+}
+
+/* Contact section */
+body.light .contact-copy p,
+body.light .field label {
+    color: #493653;
+}
+
+body.light .contact-link {
+    color: #241332;
+}
+
+body.light .contact-link b,
+body.light .form-note {
+    color: #64118F;
+}
+
+body.light .field input,
+body.light .field textarea {
+    background: #F8EAF7;
+    color: #241332;
+}
+
+body.light .field input::placeholder,
+body.light .field textarea::placeholder {
+    color: #715C78;
+}
+
+/* Footer */
+body.light footer {
+    color: #493653;
+}
+
+body.light .back-top {
+    color: #64118F;
+}
+
+/* Modal and toast */
+body.light .modal-head h2 {
+    color: #241332;
+}
+
+body.light .modal-body {
+    color: #493653;
+}
+
+/* Profile portrait border */
+body.light .profile-image-container {
+    border-color: #64118F;
+}
+
+/* Mobile background behaviour */
+@media (max-width: 768px) {
+    body::before {
+        position: absolute;
+    }
+}
