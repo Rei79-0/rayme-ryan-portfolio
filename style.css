@@ -1877,109 +1877,166 @@ body.light .topbar {
 
 
 /* =========================================
-   25. TABLET RESPONSIVENESS (INCLUDING iPAD MINI)
-   The iPad Mini is 768px wide in portrait mode.
-   Treat tablet portrait widths as compact layouts,
-   not as desktop navigation squeezed into a tablet.
+   25. TABLET LAYOUT — iPAD MINI INCLUDED
+   Plain CSS only. Portrait: compact navigation
+   and stacked hero. Landscape: desktop layout.
    ========================================= */
 
-@media (min-width: 651px) and (max-width: 850px) {
-  /* Switch to the compact navigation before the
-     desktop links become cramped or overlap. */
-  .nav {
+/* iPad Mini portrait: 768 × 1024 CSS pixels */
+@media screen and (min-width: 651px) and (max-width: 850px) and (orientation: portrait) {
+  .topbar,
+  .topbar .nav {
+    width: 100%;
+  }
+
+  .topbar .nav {
     position: relative;
     min-height: 68px;
     padding: .65rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: .75rem;
   }
 
-  .brand {
+  .topbar .brand {
     min-width: 0;
+    flex: 1 1 auto;
     gap: .65rem;
     font-size: .72rem;
-    letter-spacing: .09em;
+    letter-spacing: .07em;
   }
 
-  .brand-mark {
+  .topbar .brand-mark {
+    flex: 0 0 32px;
     width: 32px;
     height: 32px;
-    flex: 0 0 32px;
   }
 
-  .menu-btn {
+  .topbar .nav-actions {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  /* Use the same expandable navigation pattern as mobile. */
+  .topbar .nav .menu-btn {
     display: grid;
     flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
   }
 
-  .navlinks {
+  .topbar .nav .navlinks {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    z-index: 60;
-    padding: .65rem 1.25rem 1rem;
+    z-index: 80;
     margin: 0;
-    background: color-mix(in srgb, var(--bg) 97%, transparent);
-    border-bottom: 1px solid var(--line);
-    box-shadow: var(--shadow);
+    padding: .65rem 1.25rem 1rem;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
   }
 
-  .navlinks.open {
+  .topbar .nav .navlinks.open {
     display: flex;
   }
 
-  .navlinks a {
+  .topbar .nav .navlinks a {
     display: block;
     padding: .85rem .35rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    border-bottom: 1px solid var(--line);
     font-size: .75rem;
-    letter-spacing: .13em;
+    letter-spacing: .12em;
   }
 
-  .navlinks a:last-child {
+  .topbar .nav .navlinks a:last-child {
     border-bottom: 0;
   }
 
-  /* Give the hero enough room without making the
-     introduction or emblem feel squeezed. */
-  .hero {
+  /* Stack profile copy and the complete RR emblem. */
+  main .hero {
+    display: grid;
     grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 1.5rem;
     min-height: auto;
-    padding: 4rem 0 3rem;
-    gap: 2.25rem;
+    padding: 3.25rem 0 2.75rem;
   }
 
-  .hero-copy {
+  main .hero-copy {
     width: 100%;
     max-width: 680px;
+    min-width: 0;
     margin-inline: auto;
   }
 
-  .hero h1 {
-    font-size: clamp(3.5rem, 9vw, 5.5rem);
+  main .hero h1 {
+    font-size: clamp(3.5rem, 8vw, 5rem);
   }
 
-  .hero-lede {
+  main .hero-lede {
     max-width: 650px;
     font-size: 1rem;
   }
 
-  .hero-art {
+  main .hero-art {
+    --tablet-seal-size: min(300px, 43vw);
     width: 100%;
-    min-height: 410px;
-    padding-inline: 2rem;
+    min-width: 0;
+    min-height: calc(var(--tablet-seal-size) + 90px);
+    padding: 2rem 3.25rem;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    isolation: isolate;
   }
 
-  .seal {
-    width: min(300px, 48vw);
+  main .hero-art::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--tablet-seal-size) + 54px);
+    max-width: calc(100% - 1rem);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 14px color-mix(in srgb, var(--line) 18%, transparent),
+      0 0 0 30px color-mix(in srgb, var(--line) 10%, transparent);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  /* Two-by-two status cards are easier to read than
-     four narrow columns on a tablet in portrait. */
+  main .hero-art .seal {
+    width: var(--tablet-seal-size);
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  main .hero-art .seal-side {
+    white-space: nowrap;
+    font-size: .55rem;
+  }
+
+  main .hero-art .seal-side.left {
+    left: -2rem;
+  }
+
+  main .hero-art .seal-side.right {
+    right: -2rem;
+  }
+
+  /* Status information becomes a readable 2 × 2 grid. */
   .status-inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2004,14 +2061,10 @@ body.light .topbar {
     overflow-wrap: anywhere;
   }
 
-  /* Avoid cramped two-column content panels at tablet width. */
-  .about-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-  }
-
+  .about-grid,
   .contact-panel {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
 
   .contact-copy {
@@ -2019,255 +2072,73 @@ body.light .topbar {
     border-bottom: 1px solid var(--line);
   }
 
-  .contact-form {
-    min-width: 0;
-  }
-
   .wrap {
     padding-inline: clamp(1.25rem, 4vw, 2rem);
   }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-/* Tablet landscape and narrow laptop widths:
-   retain desktop navigation only when there is enough room. */
-@media (min-width: 851px) and (max-width: 1100px) {
-  .nav {
-    gap: .75rem;
+/* iPad Mini landscape: 1024 × 768 CSS pixels.
+   Keep the desktop composition but prevent crowding. */
+@media screen and (min-width: 851px) and (max-width: 1100px) and (orientation: landscape) {
+  .topbar .nav {
+    gap: .7rem;
     padding-inline: 1.1rem;
   }
 
-  .navlinks {
-    gap: .8rem;
-  }
-
-  .navlinks a {
-    font-size: .68rem;
-    letter-spacing: .09em;
-  }
-
-  .brand {
+  .topbar .brand {
     font-size: .7rem;
     letter-spacing: .08em;
   }
 
-  .hero {
-    gap: 1.25rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(3.5rem, 6.2vw, 5.2rem);
-  }
-}
-
-/* Keep the status strip and navigation from overflowing
-   on very narrow screens as well. */
-@media (max-width: 650px) {
-  .nav {
-    gap: .5rem;
-  }
-
-  .brand {
-    min-width: 0;
-    letter-spacing: .06em;
-  }
-
-  .brand > span:last-child {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .status-item {
-    min-width: 0;
-  }
-
-  .status-item strong,
-  .status-item span {
-    overflow-wrap: anywhere;
-  }
-}
-
-
-
-/* =========================================
-   26. iPAD MINI PORTRAIT FIX
-   Plain CSS only — no Tailwind or CSS framework.
-   Place this block at the very end of the stylesheet.
-   ========================================= */
-
-@media screen and (min-width: 700px) and (max-width: 850px) {
-  /* Force compact tablet navigation.
-     !important protects these rules from earlier desktop
-     navigation declarations in this stylesheet. */
-  body .topbar .nav .menu-btn {
-    display: grid !important;
-    flex: 0 0 40px;
-  }
-
-  body .topbar .nav .navlinks:not(.open) {
-    display: none !important;
-  }
-
-  body .topbar .nav .navlinks.open {
-    display: flex !important;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 80;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: .75rem 1.25rem 1rem;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    box-shadow: var(--shadow);
-  }
-
-  body .topbar .nav .navlinks.open a {
-    display: block;
-    padding: .85rem .35rem;
-    border-bottom: 1px solid var(--line);
-    font-size: .75rem;
-    letter-spacing: .12em;
-  }
-
-  body .topbar .nav .navlinks.open a:last-child {
-    border-bottom: 0;
-  }
-
-  body .topbar .nav {
-    position: relative;
-    min-height: 68px;
-    padding: .65rem 1.25rem;
+  .topbar .navlinks {
     gap: .75rem;
   }
 
-  body .topbar .nav .brand {
-    min-width: 0;
-    font-size: .72rem;
-    letter-spacing: .07em;
-  }
-
-  /* Stack the profile and emblem so neither is squeezed
-     into a narrow desktop-style two-column hero. */
-  body main .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) !important;
-    min-height: auto;
-    gap: 1.75rem;
-    padding-block: 3.5rem 2.75rem;
-  }
-
-  body main .hero-copy {
-    width: 100%;
-    max-width: 680px;
-    margin-inline: auto;
-  }
-
-  body main .hero h1 {
-    font-size: clamp(3.5rem, 8vw, 5.2rem);
-  }
-
-  body main .hero-lede {
-    max-width: 650px;
-  }
-
-  body main .hero-art {
-    width: 100%;
-    min-width: 0;
-    min-height: 390px;
-    display: grid;
-    place-items: center;
-    padding-inline: 2rem;
-    overflow: visible;
-    isolation: isolate;
-  }
-
-  body main .hero-art::before {
-    content: "";
-    position: absolute;
-    width: min(390px, 62vw);
-    max-width: calc(100% - 40px);
-    aspect-ratio: 1 / 1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    box-shadow:
-      0 0 0 18px color-mix(in srgb, var(--line) 18%, transparent),
-      0 0 0 38px color-mix(in srgb, var(--line) 10%, transparent);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body main .hero-art .seal {
-    width: min(280px, 48vw);
-    aspect-ratio: 1 / 1;
-    margin: 0;
-    z-index: 1;
-  }
-
-  /* Make status information readable in two columns. */
-  body .status-inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  body .status-item {
-    min-width: 0;
-    padding: 1rem;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  body .status-item:nth-child(2n) {
-    border-right: 0;
-  }
-
-  body .status-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-
-  body .status-item strong,
-  body .status-item span {
-    overflow-wrap: anywhere;
-  }
-
-  /* Keep other multi-column areas comfortable at this width. */
-  body .about-grid,
-  body .contact-panel {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-
-  body .contact-copy {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-}
-
-/* iPad Mini landscape is 1024px wide. Keep the desktop
-   composition, but tighten navigation and hero proportions. */
-@media screen and (min-width: 851px) and (max-width: 1100px) {
-  body .topbar .nav {
-    gap: .65rem;
-    padding-inline: 1rem;
-  }
-
-  body .topbar .nav .navlinks {
-    gap: .7rem;
-  }
-
-  body .topbar .nav .navlinks a {
-    font-size: .66rem;
+  .topbar .navlinks a {
+    font-size: .67rem;
     letter-spacing: .08em;
   }
 
-  body main .hero {
+  main .hero {
     grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr);
-    gap: 1rem;
+    min-height: 560px;
+    gap: 1.25rem;
+    padding-block: 3.5rem;
   }
 
-  body main .hero h1 {
-    font-size: clamp(3.3rem, 5.8vw, 4.8rem);
+  main .hero h1 {
+    font-size: clamp(3.3rem, 5.5vw, 4.8rem);
+  }
+
+  main .hero-art {
+    min-width: 0;
+  }
+
+  .status-inner {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Prevent accidental horizontal scrolling at tablet widths. */
+@media screen and (min-width: 651px) and (max-width: 1100px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .project-card,
+  .skill-group,
+  .education-card,
+  .contact-panel {
+    min-width: 0;
   }
 }
