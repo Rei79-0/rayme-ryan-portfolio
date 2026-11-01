@@ -1873,3 +1873,215 @@ body.light .topbar {
     z-index: 1;
   }
 }
+
+
+
+/* =========================================
+   25. TABLET RESPONSIVENESS (INCLUDING iPAD MINI)
+   The iPad Mini is 768px wide in portrait mode.
+   Treat tablet portrait widths as compact layouts,
+   not as desktop navigation squeezed into a tablet.
+   ========================================= */
+
+@media (min-width: 651px) and (max-width: 850px) {
+  /* Switch to the compact navigation before the
+     desktop links become cramped or overlap. */
+  .nav {
+    position: relative;
+    min-height: 68px;
+    padding: .65rem 1.25rem;
+    gap: .75rem;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: .65rem;
+    font-size: .72rem;
+    letter-spacing: .09em;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+
+  .menu-btn {
+    display: grid;
+    flex: 0 0 40px;
+  }
+
+  .navlinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    padding: .65rem 1.25rem 1rem;
+    margin: 0;
+    background: color-mix(in srgb, var(--bg) 97%, transparent);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .navlinks.open {
+    display: flex;
+  }
+
+  .navlinks a {
+    display: block;
+    padding: .85rem .35rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    font-size: .75rem;
+    letter-spacing: .13em;
+  }
+
+  .navlinks a:last-child {
+    border-bottom: 0;
+  }
+
+  /* Give the hero enough room without making the
+     introduction or emblem feel squeezed. */
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    padding: 4rem 0 3rem;
+    gap: 2.25rem;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
+  }
+
+  .hero-lede {
+    max-width: 650px;
+    font-size: 1rem;
+  }
+
+  .hero-art {
+    width: 100%;
+    min-height: 410px;
+    padding-inline: 2rem;
+  }
+
+  .seal {
+    width: min(300px, 48vw);
+  }
+
+  /* Two-by-two status cards are easier to read than
+     four narrow columns on a tablet in portrait. */
+  .status-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .status-item {
+    min-width: 0;
+    padding: 1rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .status-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .status-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .status-item strong,
+  .status-item span {
+    overflow-wrap: anywhere;
+  }
+
+  /* Avoid cramped two-column content panels at tablet width. */
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .contact-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-copy {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-form {
+    min-width: 0;
+  }
+
+  .wrap {
+    padding-inline: clamp(1.25rem, 4vw, 2rem);
+  }
+}
+
+/* Tablet landscape and narrow laptop widths:
+   retain desktop navigation only when there is enough room. */
+@media (min-width: 851px) and (max-width: 1100px) {
+  .nav {
+    gap: .75rem;
+    padding-inline: 1.1rem;
+  }
+
+  .navlinks {
+    gap: .8rem;
+  }
+
+  .navlinks a {
+    font-size: .68rem;
+    letter-spacing: .09em;
+  }
+
+  .brand {
+    font-size: .7rem;
+    letter-spacing: .08em;
+  }
+
+  .hero {
+    gap: 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 6.2vw, 5.2rem);
+  }
+}
+
+/* Keep the status strip and navigation from overflowing
+   on very narrow screens as well. */
+@media (max-width: 650px) {
+  .nav {
+    gap: .5rem;
+  }
+
+  .brand {
+    min-width: 0;
+    letter-spacing: .06em;
+  }
+
+  .brand > span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .status-item {
+    min-width: 0;
+  }
+
+  .status-item strong,
+  .status-item span {
+    overflow-wrap: anywhere;
+  }
+}
