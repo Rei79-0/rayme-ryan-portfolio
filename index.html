@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11100f">
+<meta name="description" content="Rayme Ryan Anak Roxy — Multimedia Computing student focused on software quality, web development, and usability.">
+<title>RAYME RYAN — PROFILE</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="Rayme Ryan home"><span class="brand-mark"><span>R</span></span><span>RAYME RYAN <span style="color:var(--red)">/</span> PROFILE</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#home" class="active">Home</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">◐</button>
+      <button class="menu-btn" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+  <div class="progress" id="scrollProgress" aria-hidden="true"></div>
+</header>
+<main id="main">
+  <section class="hero wrap" id="home" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div class="eyebrow">Profile · Multimedia Computing</div>
+      <h1 id="hero-title">RAYME<br><span>RYAN.</span></h1>
+      <p class="hero-lede">A Multimedia Computing student from Kuching, Sarawak, exploring the space between software quality, web experiences, and thoughtful design.</p>
+      <div class="role-line" aria-live="polite"><span id="typedRole">Quality Assurance</span><span aria-hidden="true"> ▌</span></div>
+      <div class="cta-row">
+        <a class="btn" href="#projects">Explore portfolio <span aria-hidden="true">↘</span></a>
+        <a class="btn secondary" href="#contact">Contact me</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Monogram emblem for Rayme Ryan">
+      <div class="seal"><span class="seal-side left">Curiosity · Craft</span><span class="seal-initials">RR</span><span class="seal-caption">Learn · Test · Improve</span><span class="seal-side right">Kuching · Sarawak</span></div>
+    </div>
+  </section>
+  <div class="status-strip" aria-label="Profile summary">
+    <div class="wrap status-inner">
+      <div class="status-item"><strong>Current class</strong><span>BSc Multimedia Computing</span></div>
+      <div class="status-item"><strong>Focus</strong><span>QA & web development</span></div>
+      <div class="status-item"><strong>Location</strong><span>Kuching, Sarawak</span></div>
+      <div class="status-item"><strong>Availability</strong><span>Open to learning opportunities</span></div>
+    </div>
+  </div>
+  <section class="wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Project archive</div><h2 id="projects-title">Projects</h2></div>
+      <p>A selection of academic and personal projects exploring 3D modelling, databases, Java, computer graphics, and Python.</p>
+    </div>
+    <div class="filters reveal" role="group" aria-label="Filter projects">
+      <button class="filter-btn" data-filter="all" aria-pressed="true">All projects</button>
+      <button class="filter-btn" data-filter="3d" aria-pressed="false">3D & animation</button>
+      <button class="filter-btn" data-filter="database" aria-pressed="false">Database</button>
+      <button class="filter-btn" data-filter="java" aria-pressed="false">Java development</button>
+      <button class="filter-btn" data-filter="game" aria-pressed="false">Game development</button>
+      <button class="filter-btn" data-filter="python" aria-pressed="false">Python development</button>
+    </div>
+    <div class="project-grid" id="projectGrid">
+      <article class="project-card reveal" data-category="3d">
+        <div class="card-top"><span>Project 01 / 3D modelling</span><span class="card-symbol" aria-hidden="true">◇</span></div>
+        <div class="project-media">
+          <img src="assets/images/projects/blender1.png" alt="Blender sword and animation environment during development" width="960" height="540" loading="lazy">
+          <span class="screenshot-missing" hidden>Screenshot not supplied<small>blender1.png</small></span>
+        </div>
+        <h3>Blender 3D Model Animation</h3>
+        <p>Modelling a 3D sword and its environment in Blender for an animated scene featuring an integrated third-party character.</p>
+        <div class="tags"><span class="tag">Blender</span><span class="tag">3D modelling</span><span class="tag">Animation</span></div>
+        <button class="card-open" type="button" data-project="blender">View project details <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="database">
+        <div class="card-top"><span>Project 02 / Database</span><span class="card-symbol" aria-hidden="true">⌕</span></div>
+        <div class="project-media">
+          <img src="assets/images/projects/auction.png" alt="Sarawak Heritage online auction buyer panel showing listings, current bids, and bid-entry controls" width="960" height="540" loading="lazy">
+          <span class="screenshot-missing" hidden>Screenshot not supplied<small>auction.png</small></span>
+        </div>
+        <h3>Sarawak Heritage Online Auction Database</h3>
+        <p>A PHP web application for interacting with Sarawak heritage auction information in a locally managed database.</p>
+        <div class="tags"><span class="tag">PHP</span><span class="tag">XAMPP</span><span class="tag">phpMyAdmin</span></div>
+        <button class="card-open" type="button" data-project="auction">View project details <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="java">
+        <div class="card-top"><span>Project 03 / Java development</span><span class="card-symbol" aria-hidden="true">✳</span></div>
+        <div class="project-media">
+          <img src="assets/images/projects/edu.png" alt="Edu Reform Hub Java quiz platform screenshot" width="960" height="540" loading="lazy">
+          <span class="screenshot-missing" hidden>Screenshot not supplied<small>edu.png</small></span>
+        </div>
+        <h3>Edu Reform Hub</h3>
+        <p>A Java learning and multiple-choice quiz application with timed assessments, scores, a leaderboard, and achievements.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Quiz platform</span><span class="tag">Education</span></div>
+        <button class="card-open" type="button" data-project="edu">View project details <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="game">
+        <div class="card-top"><span>Project 04 / Game development</span><span class="card-symbol" aria-hidden="true">▤</span></div>
+        <div class="project-media">
+          <img src="assets/images/projects/game.jpeg" alt="Urban Safety Defender computer graphics game screenshot" width="960" height="540" loading="lazy">
+          <span class="screenshot-missing" hidden>Screenshot not supplied<small>game.jpeg</small></span>
+        </div>
+        <h3>Urban Safety Defender</h3>
+        <p>A Space Invaders-inspired C++ game where players control a tank and shoot incoming enemies.</p>
+        <div class="tags"><span class="tag">C++</span><span class="tag">Computer graphics</span><span class="tag">Game development</span></div>
+        <button class="card-open" type="button" data-project="urban-safety">View project details <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="project-card reveal" data-category="python">
+        <div class="card-top"><span>Project 05 / Python development</span><span class="card-symbol" aria-hidden="true">⌂</span></div>
+        <div class="project-media">
+          <img src="assets/images/projects/teamcollab1-sanitized.png" alt="Team Collab Management System main menu with registration details redacted" width="676" height="440" loading="lazy">
+          <span class="screenshot-missing" hidden>Screenshot not supplied<small>teamcollab1-sanitized.png</small></span>
+        </div>
+        <h3>Team Collab Management System</h3>
+        <p>A Python collaboration system for team leaders, students, and lecturers to manage group work, submissions, and feedback.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Team management</span><span class="tag">Dashboard</span></div>
+        <button class="card-open" type="button" data-project="team-collab">View project details <span aria-hidden="true">↗</span></button>
+      </article>
+    </div>
+  </section>
+  <section id="about" style="background:var(--panel)" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Character profile</div><h2 id="about-title">About me</h2></div></div>
+      <div class="about-grid">
+        <aside class="profile-panel reveal">
+          <div class="profile-image-container">
+            <img
+              src="assets/profile/profile.jpeg"
+              alt="Portrait of Rayme Ryan"
+              class="profile-image">
+          </div>
+          <h3>Rayme Ryan Anak Roxy</h3>
+          <p>Multimedia Computing student with hands-on experience in software QA, web development, and application testing.</p>
+          <div class="profile-meta">
+            <div class="meta-row"><span>Current study</span><strong>UNIMAS</strong></div>
+            <div class="meta-row"><span>Based in</span><strong>Kuching, Malaysia</strong></div>
+            <div class="meta-row"><span>Working style</span><strong>Curious & collaborative</strong></div>
+          </div>
+        </aside>
+        <div class="about-copy reveal">
+          <p>I enjoy understanding how applications behave, finding issues that affect the user experience, and learning how design and development choices shape a product. My internship introduced me to hands-on QA practices, while my studies continue to build my technical foundation.</p>
+          <p>I am a motivated learner who values problem-solving, teamwork, and clear documentation. I am continuing to strengthen my development skills while building on my experience in testing and usability.</p>
+          <div class="eyebrow" style="margin-top:2rem">Experience timeline</div>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-date">Jan 2026 — Ongoing</div><h3>Quality Assurance (Contractor) · Techtodian</h3><p>Manual testing, security checks, test documentation, issue reproduction, and regression testing.</p></div>
+            <div class="timeline-item"><div class="timeline-date">Jan 2024 — Jan 2025</div><h3>Exco Programme · PERTEKMA</h3><p>Faculty announcements, student support, and communication between students and faculty.</p></div>
+            <div class="timeline-item"><div class="timeline-date">Sep 2023 — Mar 2024</div><h3>Intern Student · Sains Samarahan</h3><p>Website revamp and client-facing forms, reports, and contractual documents.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="wrap" id="skills" aria-labelledby="skills-title">
+    <div class="section-head reveal"><div><div class="eyebrow">Inventory</div><h2 id="skills-title">Skills & education</h2></div><p>Tools and capabilities I have worked with through study, internship, and student responsibilities.</p></div>
+    <div class="skills-layout reveal">
+      <div class="skill-group"><h3>Programming & web</h3><div class="skill-list"><span class="skill-chip">JavaScript</span><span class="skill-chip">Java</span><span class="skill-chip">HTML</span><span class="skill-chip">CSS</span><span class="skill-chip">React</span></div></div>
+      <div class="skill-group"><h3>Testing & technical tools</h3><div class="skill-list"><span class="skill-chip">Functional testing</span><span class="skill-chip">Regression testing</span><span class="skill-chip">Security testing</span><span class="skill-chip">Chrome DevTools</span><span class="skill-chip">Git</span><span class="skill-chip">GitHub</span><span class="skill-chip">VS Code</span><span class="skill-chip">AntiGravity</span></div></div>
+      <div class="skill-group"><h3>Data, UI & documentation</h3><div class="skill-list"><span class="skill-chip">SQL</span><span class="skill-chip">MySQL</span><span class="skill-chip">Figma</span><span class="skill-chip">Adobe Illustrator</span><span class="skill-chip">iReport</span><span class="skill-chip">Technical documentation</span></div></div>
+      <div class="skill-group"><h3>Strengths & languages</h3><div class="skill-list"><span class="skill-chip">Problem-solving</span><span class="skill-chip">Team player</span><span class="skill-chip">Management</span><span class="skill-chip">English</span><span class="skill-chip">Malay</span><span class="skill-chip">Iban</span><span class="skill-chip">Bidayuh</span></div></div>
+    </div>
+    <div class="eyebrow reveal" style="margin-top:3rem">Education record</div>
+    <div class="education-list reveal">
+      <article class="education-card"><div><h3>Bachelor of Computer Science (Multimedia Computing) with Honours</h3><p>Universiti Malaysia Sarawak (UNIMAS) · MQA/FA9706</p><p>CGPA: 3.1 (Year 2, Semester 2 — as listed in resume)</p></div><div class="year">2023 — Ongoing</div></article>
+      <article class="education-card"><div><h3>Diploma in Computer Science (CS110)</h3><p>Universiti Teknologi MARA (UiTM)</p><p>CGPA: 3.18</p></div><div class="year">2021 — 2023</div></article>
+      <article class="education-card"><div><h3>Sijil Pelajaran Malaysia (SPM)</h3><p>SMK Tun Abdul Razak · Results listed: 5A-, 1B+, 2D, 1E</p></div><div class="year">2016 — 2021</div></article>
+    </div>
+  </section>
+  <section id="contact" style="background:var(--panel)" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <div class="contact-copy">
+          <div class="eyebrow">Open transmission</div>
+          <h2 id="contact-title">Let's build<br>something better.</h2>
+          <p>Interested in connecting about QA, web development, or future learning opportunities? Feel free to reach out.</p>
+          <div class="contact-details">
+            <span class="contact-link"><b aria-hidden="true">✉</b> raymeryan98@gmail.com</span>
+            <a class="contact-link" href="tel:+60172173038"><b aria-hidden="true">⌕</b> +60 17-217 3038</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/rayme-ryan-" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">↗</b> LinkedIn profile</a>
+            <span class="contact-link"><b aria-hidden="true">⌖</b> Kuching, Sarawak, Malaysia</span>
+          </div>
+          <button class="btn secondary" type="button" id="copyEmail" style="margin-top:1.5rem">Copy email address</button>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="eyebrow">Message terminal</div>
+          <div class="field"><label for="senderName">Your name</label><input id="senderName" name="name" autocomplete="name" required maxlength="100" placeholder="Enter your name"></div>
+          <div class="field"><label for="senderEmail">Your email</label><input id="senderEmail" name="email" type="email" autocomplete="email" required maxlength="150" placeholder="you@example.com"></div>
+          <div class="field"><label for="senderMessage">Message</label><textarea id="senderMessage" name="message" required maxlength="2000" placeholder="Write a short message..."></textarea></div>
+          <button class="btn" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          <p class="form-note" id="formNote" aria-live="polite">Prototype form — messages are not actually sent or stored.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Rayme Ryan Anak Roxy · Personal portfolio</span><a class="back-top" href="#home">Back to top ↑</a></div></footer>
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">Mission file</div><h2 id="modalTitle">Mission details</h2></div><button class="modal-close" id="modalClose" type="button" aria-label="Close project details">✕</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+  <div class="image-viewer" id="imageViewer" role="group" aria-label="Enlarged project screenshot" aria-hidden="true" hidden>
+    <button class="image-viewer-close" id="imageViewerClose" type="button" aria-label="Close enlarged screenshot">Close ✕</button>
+    <img class="image-viewer-image" id="imageViewerImage" alt="">
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
